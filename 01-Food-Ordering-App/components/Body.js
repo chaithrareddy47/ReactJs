@@ -68,9 +68,6 @@ const Body = () => {
     
   }
 
-  if (isLoading) {
-   return Array.from({length:8}).map((_,index) =>  <ShimmerUi key={index}/>)
- }
   return (
     <div className="body-container">
       <div className="search">

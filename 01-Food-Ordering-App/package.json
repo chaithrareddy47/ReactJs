@@ -2,11 +2,13 @@
   "name": "food-ordering-app",
   "version": "1.0.0",
   "description": "namste-react",
-  
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
-    "build":"parcel build index.html"
+    "build": "parcel build index.html"
+  },
+  "@parcel/resolver-default": {
+    "packageExports": true
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +17,7 @@
   },
   "dependencies": {
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5"
   }
 }
