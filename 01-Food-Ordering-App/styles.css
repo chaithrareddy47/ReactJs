@@ -156,3 +156,9 @@ li{
     height: 8px;
     background-color: lightgray; 
 }
+
+.err-container{
+    text-align: center;
+    padding: 30px;
+    line-height: 50px;
+}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isToggle,setIsToggle] = useState(false)
@@ -16,9 +17,9 @@ const Header = () => {
       </div>
       <div className="nav-links">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact us</li>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact us</Link>
           {
             isToggle ? <button onClick={handleChange}>Login</button> : <button onClick={handleChange}>Logout</button>
           }
