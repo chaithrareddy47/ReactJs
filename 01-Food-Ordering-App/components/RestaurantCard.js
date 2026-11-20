@@ -1,22 +1,23 @@
-import { CDN_URL } from "../utils/data";
 
+import { CDN_URL } from "../utils/data";
 const RestaurantCard = ({ resList }) => {
   // console.log(resList);
-  const { slaString } = resList.info.sla;
-    
-    const { name, cloudinaryImageId, cuisines, avgRating, areaName } =
-      resList.info;
+  const { name, cloudinaryImageId, avgRating, cuisines, locality } =
+    resList.info;
+  const {slaString } = resList.info.sla;
+  
   return (
     <div className="res-card">
-      <img src={`${CDN_URL}${cloudinaryImageId}`} alt="" className="res-img" />
-
+      <div className="res-img">
+        <img src={`${CDN_URL}${cloudinaryImageId}`} alt={name} />
+      </div>
       <div className="res-desc">
-        <p className="res res-name">{name}</p>
-        <p className="res res-rating">
-          {avgRating} .{slaString}
+        <p className="res-name">{name}</p>
+        <p className="res-ratings">
+          {avgRating}.{slaString}
         </p>
-        <p className="res res-cusines">{cuisines.join(", ")}</p>
-        <p className="res res-area">{areaName}</p>
+        <p className="res-cusines">{cuisines.join(", ")}</p>
+        <p className="res-add">{locality}</p>
       </div>
     </div>
   );
