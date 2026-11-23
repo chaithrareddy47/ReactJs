@@ -15,7 +15,7 @@ const VanDetails = () => {
             );
             const response = await data.json()
             const responseData = response?.vans
-            // console.log(responseData)
+            console.log(responseData)
             setVanInfo(responseData)
             
         }

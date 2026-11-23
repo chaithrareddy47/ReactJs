@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 
 
 const VanCard = ({ vanObj }) => {
+  console.log(vanObj);
+  
     const { imageUrl,name,price,type ,id} = vanObj;
   return (
     <div className="van-info">
