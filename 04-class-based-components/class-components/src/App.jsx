@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div>
       <FunctionCompo name="Functional component" />
-      <ClassCompo/>
+      <ClassCompo name="hiee"/>
     </div>
   )
 }
