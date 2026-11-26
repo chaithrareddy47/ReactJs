@@ -4,18 +4,28 @@ import User from './User'
 class About extends Component{
   constructor(props) {
     super(props)
-    console.log("parent constructor called");
+    // console.log("parent constructor called");
+
+    this.state = {
+      userInfo:null
+    }
   }
-  componentDidMount() {
-    console.log("parent compoenent did mount");
-    
+  async componentDidMount() {
+    // console.log("parent compoenent did mount");
+    const data = await fetch("https://api.github.com/users/chaithrareddy47")
+    const response = await data.json()
+    console.log(response);
+
+    this.setState({
+      userInfo:response
+    })
   }
   render() {
-    console.log("parent render called");
+    
     return (
       <div>
-        <User/>
-        <User/>
+        <User userInfo={this.state.userInfo } />
+        
       </div>
     )
     
