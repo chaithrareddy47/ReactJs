@@ -1,34 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { SWIGGY_API } from "../utils/data";
 import RestaurantCard from "./RestaurantCard";
 import { Link } from "react-router-dom";
 
+import useRestaurantList from "../utils/useRestaurantList";
+
 const Body = () => {
-  const [allRestaurants, setAllRestaurants] = useState([]);
+  const allRestaurants = useRestaurantList()
+  
   const [listOfRestro, setListOfRestro] = useState([]);
-  const [searchText,setsearchText] = useState("")
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    setListOfRestro(allRestaurants)
+  }, [allRestaurants])
+  
+  const [searchText,setsearchText] = useState("")
 
-  const fetchData = async () => {
-    const data = await fetch("https://namastedev.com/api/v1/listRestaurants");
 
-    const response = await data.json();
-    // console.log(response);
-
-    const findData = response?.data?.data?.cards?.find(
-      (data) => data?.card?.card?.gridElements?.infoWithStyle,
-    );
-    // console.log(findData);
-
-    const restaurant =
-      findData?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-    // console.log(restaurant);
-    setAllRestaurants(restaurant);
-    setListOfRestro(restaurant);
-  };
+ 
 
   const handleSearch = () => {
     console.log("button cliked")
@@ -49,6 +37,8 @@ const Body = () => {
     const topRestro = allRestaurants.filter((data) => data.info.avgRating > 4.3)
     setListOfRestro(topRestro)
   }
+  
+
   return (
     <div>
       <div className="search-container">
@@ -64,7 +54,8 @@ const Body = () => {
         <button onClick={handleClear}>clear</button>
       </div>
       <div className="res-card-container">
-        {listOfRestro.map((data) => (
+        {
+          listOfRestro.map((data) => (
           <Link to={`${"restaurant/"}${data.info.id}`} key={data.info.id}>
             <RestaurantCard resList={data} />
           </Link>
